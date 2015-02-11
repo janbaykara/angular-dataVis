@@ -34,11 +34,15 @@ angular.module('utils.dataVis',[])
               , output;
 
             return (newMax > newMin)
-                   ? Math.min(newMax,newMax - (newRange * ratio))
-                   : Math.max(newMin,newMin - (newRange * ratio))
+                   ? between(newMax - (newRange * ratio),newMin,newMax)
+                   : between(newMin - (newRange * ratio),newMax,newMin)
         }
 
         // --------------
+
+        function between(val,min,max) {
+          return Math.min(Math.max(val,min),max)
+        }
 
         function intersectionObjects() {
             var Results = arguments[0]
