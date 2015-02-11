@@ -21,7 +21,7 @@ angular.module('utils.dataVis',[])
             }
             return hash;
         };
-    });
+    })
     .filter('normalise', function() {
         /*
             Maps a value between [0,1] to [2,3]
