@@ -34,8 +34,8 @@ angular.module('utils.dataVis',[])
               , output;
 
             return (newMax > newMin)
-                   ? newMax - (newRange * ratio)
-                   : newMin - (newRange * ratio)
+                   ? Math.min(newMax,newMax - (newRange * ratio))
+                   : Math.max(newMin,newMin - (newRange * ratio))
         }
 
         // --------------
