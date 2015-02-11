@@ -1,0 +1,26 @@
+{
+  "name": "angular-dataVis",
+  "version": "1.0.0",
+  "homepage": "https://github.com/janbaykara/angular-dataVis",
+  "authors": [
+    "Jan Baykara <jan@baykara.co.uk>"
+  ],
+  "description": "AngularJS module wrapping some useful filters",
+  "main": "utils.dataVis.js",
+  "keywords": [
+    "angularjs",
+    "filter",
+    "string"
+  ],
+  "dependencies": {
+    "angularjs": "*"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
