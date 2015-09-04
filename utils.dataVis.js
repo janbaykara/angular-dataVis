@@ -27,15 +27,16 @@ angular.module('utils.dataVis',[])
             Maps a value between [0,1] to [2,3]
             {{ someInt | normalise:1:10:50:-20 }}
         */
-        return function(input, min, max, newMin, newMax) {
-            var ratio = (max > min) ? input / (max - min) : input / (min - max)
+        return function(input, min, max, newMin, newMax, divideBy) {
+            var divideBy = (typeof divideBy != 'undefined' ) ? divideBy : 1
+              , ratio = (max > min) ? input / (max - min) : input / (min - max)
               , range = (max < min) ? (max - min) : (min - max)
               , newRange = (max < min) ? (newMax - newMin) : (newMin - newMax)
               , output;
 
             return (newMax > newMin)
-                   ? between(newMax - (newRange * ratio),newMin,newMax)
-                   : between(newMin - (newRange * ratio),newMax,newMin)
+                   ? between(newMax - (newRange * ratio),newMin,newMax) / divideBy
+                   : between(newMin - (newRange * ratio),newMax,newMin) / divideBy
         }
 
         // --------------
@@ -73,5 +74,11 @@ angular.module('utils.dataVis',[])
                 }
             }
             return Result;
+        }
+    })
+    .filter('sup', function($sce) {
+        return function(input) {
+            var num = input.split(".");
+            return $sce.trustAsHtml(num[0]+"<sup>."+num[1]+"</sup>");
         }
     })
